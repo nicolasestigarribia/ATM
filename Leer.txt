@@ -1,8 +1,36 @@
-en la base de datos, tenog una tabla que se llama llaves, y guardo unicamente la llave privada
 
-api que gestione el pago y el front
-solicitar llave, metodo de la api
-creo una llave con rsa, guardarla en la bdd unicamente la lave privada y asignarle un ID
+API
 
-la publica la envio al front, una vez que,
+La api tiene la logica de negocio de los modelos, y los controladores que permiten acceder a los endpoint.
 
+
+
+
+Cliente Blazor
+
+Vista Login
+
+En esta vista se muestra el ingreso de la tarjeta, el sistema valida que la tarjeta tenga los caracteres correctos, y que exista.
+
+Vista Pin
+
+A esta vista se llega luego de haber validado la tarjeta, si el pin es correcto, se guarda el ususario en el storage de la web y se redirecciona al index.
+
+Vista Index
+
+Una vez se llega a esta vista, el usuario ya esta autorizado para realizar las operaciones, esto se controla mediante un AutenticationState. En esta vista
+se muestran los botones de Retirar y Balance
+
+Vista Balance
+
+En esta vista se muestran los movimientos(retiros o ingresos) y el balance de la tarjeta. Una vez se accede se crear un registro de operacion y se guarda en la base de datos
+
+
+Vista Retiro
+
+En esta vista se permite al usuario hacer un retiro de dinero, y se comprueba que el monto no exceda el balance de la tarjeta. Si el monto es correcto
+se envia a la vista de comprobante
+
+Vista Comprobante
+
+En esta vista se muestran el monto que retiro el usuario, el balance restante, y la fecha y hora del retiro.
