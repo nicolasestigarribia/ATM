@@ -1,0 +1,43 @@
+﻿
+
+@*<div id="container">*@
+	<div class="row justify-content-center">
+	<ul id="keyboard">
+        <li class="symbol btn-cash" @onclick="@(()=>EnviarNumero(1))"><span class="off"  >1</span></li>
+        <li class="symbol btn-cash" @onclick="@(()=>EnviarNumero(2))"><span class="off"   >2</span></li>
+        <li class="symbol btn-cash" @onclick="@(()=>EnviarNumero(3))"><span class="off"   >3</span></li>
+    </ul>
+	</div>
+	<div class="row justify-content-center">
+		<ul id="keyboard">
+		<li class="symbol btn-cash" @onclick="@(()=>EnviarNumero(4))"><span class="off" >4</span></li>
+        <li class="symbol btn-cash"@onclick="@(()=>EnviarNumero(5))"><span class="off" >5</span></li>
+        <li class="symbol btn-cash" @onclick="@(()=>EnviarNumero(6))"><span class="off"  >6</span></li>
+		</ul>
+	 </div>
+	 <div class="row justify-content-center">
+			 <ul  id="keyboard">
+			<li class="symbol btn-cash"  @onclick="@(()=>EnviarNumero(7))"><span class="off">7</span></li>
+			<li class="symbol btn-cash" @onclick="@(()=>EnviarNumero(8))"><span class="off"  >8</span></li>
+			<li class="symbol btn-cash" @onclick="@(()=>EnviarNumero(9))"><span class="off" >9</span></li>
+		 </ul>
+	  </div>
+	  <div class="row justify-content-center">
+		  <ul id="keyboard">
+			<li class="symbol btn-cash" @onclick="@(()=>EnviarNumero(0))"><span class="off" >0</span></li>
+		</ul>
+</div>
+@*</div>*@
+
+@code {
+
+	[Parameter]
+	public EventCallback<int> numerotarjeta { get; set; }
+
+	public string numero;
+
+	protected async Task EnviarNumero(int numero1)
+	{
+		 await numerotarjeta.InvokeAsync(numero1);
+	}
+}

@@ -1,0 +1,10 @@
+﻿@page "/Error/{mensaje}"
+
+<h3>Error</h3>
+<div class="alert alert-danger">@mensaje</div>
+
+@code {
+
+    [Parameter]
+    public string mensaje { get; set; }
+}

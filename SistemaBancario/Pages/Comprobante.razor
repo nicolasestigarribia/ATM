@@ -1,0 +1,51 @@
+﻿@page "/Comprobante/{id:int}/{monto}"
+@using SistemaBancario.Data
+@using SistemaBancario.Services
+@inject ITarjetaService tarjetaService
+@inject NavigationManager navegador
+
+<div class="container-fluid mt-5">
+	<div class="row" style="height:100px;"></div>
+	<div class="row">
+			<div class="col-4"></div>
+				<div class="card col-4" style="width: 18rem;">
+					  <div class="card-header  text-center">
+						<div class="alert alert-success">
+							<h3>Retiro exitoso</h3>
+						</div>
+					  </div>
+					  <ul class="list-group list-group-flush">
+						<li class="list-group-item">Retiro: @monto</li>
+						<li class="list-group-item">Restante: @tarjeta.Balance</li>
+						<li class="list-group-item">Fecha y hora: @fechaHora</li>
+						<li class="list-group-item"><button class="btn btn-danger" @onclick="Salir">Salir</button></li>
+					  </ul>
+				</div>
+		<div class="col-4"></div>	
+	</div>
+  </div>
+
+@code {
+	[Parameter]
+	public int id { get; set;}
+
+	[Parameter]
+	public string monto { get; set;}
+
+
+	public Tarjeta tarjeta;
+	public DateTime fechaHora;
+
+	protected override async Task OnInitializedAsync()
+	{
+		tarjeta = new Tarjeta();
+		fechaHora = DateTime.Now;
+		tarjeta = await tarjetaService.GetById(id);	
+	}
+
+	public void Salir()
+	{
+		navegador.NavigateTo("/Salir");
+	}
+
+}

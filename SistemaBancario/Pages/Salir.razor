@@ -1,0 +1,13 @@
+﻿@page "/Salir"
+@inject ISessionStorageService localStorage
+@inject NavigationManager navegador;
+
+@code {
+     
+
+    protected override async Task OnInitializedAsync()
+    {
+        await localStorage.ClearAsync();
+        navegador.NavigateTo("/", forceLoad:true);
+    }
+}

@@ -1,0 +1,8 @@
+en la base de datos, tenog una tabla que se llama llaves, y guardo unicamente la llave privada
+
+api que gestione el pago y el front
+solicitar llave, metodo de la api
+creo una llave con rsa, guardarla en la bdd unicamente la lave privada y asignarle un ID
+
+la publica la envio al front, una vez que,
+

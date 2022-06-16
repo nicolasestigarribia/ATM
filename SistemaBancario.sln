@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.1.32210.238
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SistemaBancario", "SistemaBancario\SistemaBancario.csproj", "{9A1508FA-CB89-4ACD-90C0-D377F683B41E}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BancoApi", "BancoApi\BancoApi.csproj", "{A6D083A9-4ACB-47D9-A5F0-16AC3E335EA6}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9A1508FA-CB89-4ACD-90C0-D377F683B41E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9A1508FA-CB89-4ACD-90C0-D377F683B41E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9A1508FA-CB89-4ACD-90C0-D377F683B41E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9A1508FA-CB89-4ACD-90C0-D377F683B41E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A6D083A9-4ACB-47D9-A5F0-16AC3E335EA6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A6D083A9-4ACB-47D9-A5F0-16AC3E335EA6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A6D083A9-4ACB-47D9-A5F0-16AC3E335EA6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A6D083A9-4ACB-47D9-A5F0-16AC3E335EA6}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {EDA062D8-CA63-4ECA-A304-78288042B313}
+	EndGlobalSection
+EndGlobal

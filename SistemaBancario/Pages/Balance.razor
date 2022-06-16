@@ -1,0 +1,82 @@
+﻿@page "/Balance"
+@attribute [Authorize]
+@using SistemaBancario.Data
+@using SistemaBancario.Services
+
+@inject ISessionStorageService localStorge
+@inject IOperacionService operacionService
+@inject ITarjetaService tarjetaService
+
+
+<div class="row">
+	<div class="col-4">
+			<div class="card" style="width: 18rem;">
+			  <div class="card-header">
+				<h3>Balance</h3>
+			  </div>
+			  <ul class="list-group list-group-flush">
+				<li class="list-group-item">Monto : @tarjeta.Balance</li>
+				<li class="list-group-item">Numero de tarjeta: @tarjeta.NumeroTarjeta</li>
+				<li class="list-group-item">Vencimiento de tarjeta: @tarjeta.FechaVencimiento</li>
+			  </ul>
+			</div>
+		</div>
+
+		
+		<div class="col-4">
+			@foreach (var operacion in ListaOperaciones)
+			{
+		    @if(operacion.CodigoOperacion == 3)
+			{
+			  <div class="card" style="width: 18rem;">
+			  <div class="card-header">
+				 
+				<h3>Ingresos</h3>
+			  </div>
+			  <ul class="list-group list-group-flush">
+				<li class="list-group-item">Monto : @operacion.Monto</li>
+				<li class="list-group-item">Fecha y hora: @operacion.FechaHora</li>
+			  </ul>
+			</div>
+			}
+			}
+		</div>
+
+		<div class="col-4">
+		@foreach (var operacion1 in ListaOperaciones)
+		{
+			@if (operacion1.CodigoOperacion == 1)
+			{
+			  <div class="card" style="width: 18rem;">
+			  <div class="card-header">
+				<h3>Retiros</h3>
+			  </div>
+			  <ul class="list-group list-group-flush">
+				<li class="list-group-item">Monto : @operacion1.Monto</li>
+				<li class="list-group-item">Fecha y hora: @operacion1.FechaHora</li>
+			  </ul>
+			</div>
+			}
+		}
+		</div>
+
+</div>
+
+@code {
+	Tarjeta tarjeta; 
+	List<Operacion> ListaOperaciones;
+	protected override async Task OnInitializedAsync()
+	{
+		tarjeta = new Tarjeta();
+		ListaOperaciones = new List<Operacion>();
+		var idTarjeta = await localStorge.GetItemAsync<int>("KEY");
+		
+		tarjeta = await tarjetaService.GetById(idTarjeta);
+		ListaOperaciones = (await operacionService.GetListaByIdTarjeta(idTarjeta)).ToList();
+
+		//var opera = new Operacion(tarjeta.IdTarjeta, 2, "Balance", DateTime.Now);
+
+		//await operacionService.Insert(opera);
+	}
+
+}
